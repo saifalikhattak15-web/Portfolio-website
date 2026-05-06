@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHMS — Smart Hospital Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- NOTIFICATION BAR -->
+  <div id="notifBar" class="notif-bar"></div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-head">
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ======================== HERO PAGE ======================== -->
+  <div id="page-hero" class="fullpage active">
+
+    <!-- HERO BG -->
+    <div class="hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1920&q=80"
+        alt="Hospital"
+        class="hero-img"
+        onerror="this.src='https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1920&q=80'"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <div class="brand-pulse"></div>
+        <span>SHMS</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <button class="nav-link" onclick="goTo('dashboard')">Dashboard</button>
+        <button class="nav-link" onclick="goTo('patients')">Patients</button>
+        <button class="nav-link" onclick="goTo('doctors')">Doctors</button>
+        <button class="nav-link" onclick="goTo('appointments')">Appointments</button>
+        <button class="nav-link" onclick="goTo('emergency')">Emergency</button>
+        <button class="nav-link" onclick="goTo('records')">Records</button>
+        <button class="nav-link" onclick="goTo('billing')">Billing</button>
+        <button class="nav-link" onclick="goTo('discharge')">Discharge</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </nav>
+
+    <!-- HERO CONTENT -->
+    <div class="hero-content">
+      <div class="hero-tag">Comprehensive Healthcare Platform</div>
+      <h1 class="hero-headline">
+        Where <em>Compassion</em><br/>meets Precision
+      </h1>
+      <p class="hero-sub">
+        A complete digital infrastructure for modern hospitals — managing patient lifecycle,
+        emergency triage, billing, and discharge with intelligent precision.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-hero-primary" onclick="goTo('dashboard')">Enter System</button>
+        <button class="btn-hero-ghost" onclick="goTo('patients')">Register Patient</button>
+      </div>
+      <div class="hero-stats" id="heroStats">
+        <div class="hstat"><span class="hstat-n" id="hs1">0</span><span class="hstat-l">Patients</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-n" id="hs2">0</span><span class="hstat-l">Doctors</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-n" id="hs3">0</span><span class="hstat-l">Appointments</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><span class="hstat-n" id="hs4">0</span><span class="hstat-l">Emergencies</span></div>
+      </div>
+    </div>
+
+    <!-- SCROLL HINT -->
+    <div class="scroll-hint">&#8595; Scroll to explore</div>
+  </div>
+
+  <!-- ======================== INNER APP ======================== -->
+  <div id="page-app" class="fullpage">
+
+    <!-- APP NAV -->
+    <nav class="app-nav">
+      <button class="back-btn" onclick="goToHero()">&#8592; Home</button>
+      <div class="app-brand">SHMS</div>
+      <div class="app-tabs" id="appTabs">
+        <button class="atab active" data-page="dashboard" onclick="switchTab('dashboard',this)">Dashboard</button>
+        <button class="atab" data-page="patients" onclick="switchTab('patients',this)">Patients</button>
+        <button class="atab" data-page="doctors" onclick="switchTab('doctors',this)">Doctors</button>
+        <button class="atab" data-page="appointments" onclick="switchTab('appointments',this)">Appointments</button>
+        <button class="atab" data-page="emergency" onclick="switchTab('emergency',this)">Emergency</button>
+        <button class="atab" data-page="records" onclick="switchTab('records',this)">Records</button>
+        <button class="atab" data-page="billing" onclick="switchTab('billing',this)">Billing</button>
+        <button class="atab" data-page="discharge" onclick="switchTab('discharge',this)">Discharge</button>
+      </div>
+    </nav>
+
+    <!-- CONTENT AREA -->
+    <div class="app-body">
+
+      <!-- DASHBOARD -->
+      <section class="tab-panel active" id="tab-dashboard">
+        <div class="panel-head">
+          <div class="panel-tag">Overview</div>
+          <h2 class="panel-title">Hospital Dashboard</h2>
+        </div>
+        <div class="kpi-row" id="kpiRow">
+          <div class="kpi-card"><div class="kpi-icon kpi-teal">&#9829;</div><div class="kpi-val" id="k1">0</div><div class="kpi-lbl">Active Patients</div></div>
+          <div class="kpi-card"><div class="kpi-icon kpi-red">&#9888;</div><div class="kpi-val kpi-red-txt" id="k2">0</div><div class="kpi-lbl">Emergencies</div></div>
+          <div class="kpi-card"><div class="kpi-icon kpi-green">&#10003;</div><div class="kpi-val kpi-green-txt" id="k3">0</div><div class="kpi-lbl">Discharged</div></div>
+          <div class="kpi-card"><div class="kpi-icon kpi-gold">&#36;</div><div class="kpi-val kpi-gold-txt" id="k4">0</div><div class="kpi-lbl">Pending Bills</div></div>
+          <div class="kpi-card"><div class="kpi-icon kpi-blue">&#128100;</div><div class="kpi-val kpi-blue-txt" id="k5">0</div><div class="kpi-lbl">Doctors</div></div>
+          <div class="kpi-card"><div class="kpi-icon kpi-teal">&#128197;</div><div class="kpi-val" id="k6">0</div><div class="kpi-lbl">Appointments</div></div>
+        </div>
+        <div class="dash-two">
+          <div class="dash-col">
+            <div class="section-label">Recent Activity</div>
+            <div class="timeline" id="timeline">
+              <div class="tl-item"><div class="tl-dot"></div><div class="tl-info"><div class="tl-time">Now</div><div class="tl-title">System Initialized</div><div class="tl-body">SHMS ready for operation.</div></div></div>
+            </div>
+          </div>
+          <div class="dash-col">
+            <div class="section-label">Emergency Queue</div>
+            <div id="dashEmList"></div>
+            <div id="dashEmEmpty" class="empty-msg">&#10003; No active emergencies</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PATIENTS -->
+      <section class="tab-panel" id="tab-patients">
+        <div class="panel-head">
+          <div class="panel-tag">Module 01</div>
+          <h2 class="panel-title">Patient Registration</h2>
+        </div>
+        <div class="glass-form">
+          <div class="form-grid g2">
+            <div class="fg"><label>Full Name <span class="req">*</span></label><input id="p_name" placeholder="e.g. Ahmed Raza"/></div>
+            <div class="fg"><label>Age <span class="req">*</span></label><input id="p_age" type="number" placeholder="30" min="0" max="150"/></div>
+            <div class="fg"><label>Gender</label><select id="p_gender"><option>Male</option><option>Female</option><option>Other</option></select></div>
+            <div class="fg"><label>Blood Group</label><select id="p_blood"><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div>
+            <div class="fg"><label>Phone</label><input id="p_phone" placeholder="+92 300 1234567"/></div>
+            <div class="fg"><label>Case Type</label><select id="p_type"><option value="Normal">Normal</option><option value="Emergency">Emergency</option></select></div>
+            <div class="fg"><label>Chief Complaint</label><input id="p_complaint" placeholder="Main symptom or reason"/></div>
+            <div class="fg"><label>Address</label><input id="p_address" placeholder="City, Country"/></div>
+          </div>
+          <div class="fg"><label>Notes</label><textarea id="p_notes" placeholder="Additional medical notes..."></textarea></div>
+          <div class="form-actions">
+            <button class="btn-primary" onclick="registerPatient()">Register Patient</button>
+            <button class="btn-ghost" onclick="clearForm(['p_name','p_age','p_phone','p_complaint','p_address','p_notes'])">Clear</button>
+          </div>
+        </div>
+        <div class="section-label mt24">Registered Patients &mdash; <span id="patCount">0</span></div>
+        <div class="cards-grid" id="patientCards">
+          <div class="empty-state"><div class="empty-icon">&#128100;</div><p>No patients registered yet.</p></div>
+        </div>
+      </section>
+
+      <!-- DOCTORS -->
+      <section class="tab-panel" id="tab-doctors">
+        <div class="panel-head">
+          <div class="panel-tag">Module 02</div>
+          <h2 class="panel-title">Doctor Management</h2>
+        </div>
+        <div class="glass-form">
+          <div class="form-grid g3">
+            <div class="fg"><label>Doctor Name <span class="req">*</span></label><input id="d_name" placeholder="Dr. Sara Ahmed"/></div>
+            <div class="fg"><label>Specialization</label><select id="d_spec"><option>Cardiology</option><option>Neurology</option><option>Orthopedics</option><option>Pediatrics</option><option>General Medicine</option><option>Surgery</option><option>Oncology</option><option>Dermatology</option><option>Psychiatry</option><option>Radiology</option><option>Emergency Medicine</option></select></div>
+            <div class="fg"><label>Qualification</label><input id="d_qual" placeholder="MBBS, FCPS"/></div>
+            <div class="fg"><label>Phone</label><input id="d_phone" placeholder="+92 300 0000000"/></div>
+            <div class="fg"><label>Availability</label><select id="d_avail"><option value="Available">Available</option><option value="On Leave">On Leave</option><option value="In Surgery">In Surgery</option><option value="Off Duty">Off Duty</option></select></div>
+            <div class="fg"><label>Shift</label><select id="d_shift"><option>Morning (8AM–2PM)</option><option>Afternoon (2PM–8PM)</option><option>Night (8PM–8AM)</option></select></div>
+          </div>
+          <button class="btn-primary mt16" onclick="addDoctor()">Add Doctor</button>
+        </div>
+        <div class="section-label mt24">Medical Staff &mdash; <span id="docCount">0</span></div>
+        <div class="cards-grid" id="doctorCards">
+          <div class="empty-state"><div class="empty-icon">&#128657;</div><p>No doctors added yet.</p></div>
+        </div>
+      </section>
+
+      <!-- APPOINTMENTS -->
+      <section class="tab-panel" id="tab-appointments">
+        <div class="panel-head">
+          <div class="panel-tag">Module 03</div>
+          <h2 class="panel-title">Appointment Scheduling</h2>
+        </div>
+        <div class="glass-form">
+          <div class="form-grid g2">
+            <div class="fg"><label>Patient <span class="req">*</span></label><select id="a_patient"><option value="">— Select Patient —</option></select></div>
+            <div class="fg"><label>Doctor <span class="req">*</span></label><select id="a_doctor"><option value="">— Select Doctor —</option></select></div>
+            <div class="fg"><label>Date <span class="req">*</span></label><input id="a_date" type="date"/></div>
+            <div class="fg"><label>Time <span class="req">*</span></label><input id="a_time" type="time"/></div>
+            <div class="fg"><label>Reason</label><input id="a_reason" placeholder="Consultation, Follow-up..."/></div>
+            <div class="fg"><label>Priority</label><select id="a_priority"><option>Normal</option><option>Urgent</option><option>Emergency</option></select></div>
+          </div>
+          <button class="btn-primary mt16" onclick="scheduleAppointment()">Schedule Appointment</button>
+        </div>
+        <div class="section-label mt24">Appointments &mdash; <span id="apptCount">0</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Patient</th><th>Doctor</th><th>Date &amp; Time</th><th>Reason</th><th>Priority</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="apptTable"><tr><td colspan="8" class="empty-td">No appointments scheduled yet.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- EMERGENCY -->
+      <section class="tab-panel" id="tab-emergency">
+        <div class="panel-head">
+          <div class="panel-tag">Module 04</div>
+          <h2 class="panel-title">Emergency Triage</h2>
+        </div>
+        <div class="em-top">
+          <div class="em-kpi em-red"><div class="em-dot"></div><div class="em-num" id="emCount">0</div><div class="em-lbl">Active Emergencies</div></div>
+          <div class="em-kpi em-green"><div class="em-num" id="normCount">0</div><div class="em-lbl">Normal Cases</div></div>
+          <div class="glass-form em-form">
+            <div class="section-label">Escalate Priority</div>
+            <div class="fg mt8"><label>Patient</label><select id="esc_patient"><option value="">— Select —</option></select></div>
+            <div class="fg mt8"><label>New Priority</label><select id="esc_type"><option value="Emergency">Emergency</option><option value="Normal">Normal</option></select></div>
+            <div class="fg mt8"><label>Reason</label><input id="esc_reason" placeholder="Reason for escalation"/></div>
+            <button class="btn-primary mt16 w100" onclick="escalatePriority()">Update Priority</button>
+          </div>
+        </div>
+        <div class="section-label mt24">Live Queue</div>
+        <div class="queue-list" id="emQueue">
+          <div class="empty-state"><div class="empty-icon">&#10133;</div><p>Register patients to see the queue.</p></div>
+        </div>
+      </section>
+
+      <!-- RECORDS -->
+      <section class="tab-panel" id="tab-records">
+        <div class="panel-head">
+          <div class="panel-tag">Module 05</div>
+          <h2 class="panel-title">Medical Records</h2>
+        </div>
+        <div class="glass-form">
+          <div class="form-grid g2">
+            <div class="fg"><label>Patient <span class="req">*</span></label><select id="r_patient"><option value="">— Select Patient —</option></select></div>
+            <div class="fg"><label>Doctor <span class="req">*</span></label><select id="r_doctor"><option value="">— Select Doctor —</option></select></div>
+            <div class="fg"><label>Diagnosis</label><input id="r_diag" placeholder="e.g. Hypertension Stage II"/></div>
+            <div class="fg"><label>Prescription</label><input id="r_presc" placeholder="e.g. Amlodipine 5mg daily"/></div>
+            <div class="fg"><label>Lab Tests</label><input id="r_lab" placeholder="e.g. CBC, ECG, X-Ray"/></div>
+            <div class="fg"><label>Visit Type</label><select id="r_visit"><option>OPD Visit</option><option>Emergency Visit</option><option>Follow-up</option><option>Admission</option></select></div>
+          </div>
+          <div class="fg mt8"><label>Doctor Notes</label><textarea id="r_notes" placeholder="Detailed clinical notes..."></textarea></div>
+          <button class="btn-primary mt16" onclick="addRecord()">Save Record</button>
+        </div>
+        <div class="section-label mt24">Records &mdash; <span id="recCount">0</span></div>
+        <div class="cards-grid" id="recordsList">
+          <div class="empty-state"><div class="empty-icon">&#128203;</div><p>No records yet.</p></div>
+        </div>
+      </section>
+
+      <!-- BILLING -->
+      <section class="tab-panel" id="tab-billing">
+        <div class="panel-head">
+          <div class="panel-tag">Module 06</div>
+          <h2 class="panel-title">Billing System</h2>
+        </div>z
+        <div class="glass-form">
+          <div class="form-grid g2">
+            <div class="fg"><label>Patient <span class="req">*</span></label><select id="b_patient"><option value="">— Select Patient —</option></select></div>
+            <div class="fg"><label>Billing Method</label><select id="b_method"><option value="Insurance">Insurance</option><option value="Out-of-Pocket">Out-of-Pocket</option><option value="Government Subsidized">Government Subsidized</option></select></div>
+            <div class="fg"><label>Consultation (PKR)</label><input id="b_consult" type="number" value="1500" min="0"/></div>
+            <div class="fg"><label>Medications (PKR)</label><input id="b_meds" type="number" value="0" min="0"/></div>
+            <div class="fg"><label>Lab / Tests (PKR)</label><input id="b_lab" type="number" value="0" min="0"/></div>
+            <div class="fg"><label>Room / Admission (PKR)</label><input id="b_room" type="number" value="0" min="0"/></div>
+            <div class="fg"><label>Insurance Provider</label><input id="b_insurer" placeholder="e.g. State Life, EFU"/></div>
+            <div class="fg"><label>Discount (%)</label><input id="b_disc" type="number" value="0" min="0" max="100"/></div>
+          </div>
+          <div class="bill-preview">
+            <div><div class="bill-preview-lbl">Estimated Total</div><div class="bill-preview-amt" id="billPreview">PKR 0</div></div>
+            <button class="btn-primary" onclick="generateBill()">Generate Bill</button>
+          </div>
+        </div>
+        <div class="section-label mt24">Bills &mdash; <span id="billCount">0</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Bill ID</th><th>Patient</th><th>Method</th><th>Subtotal</th><th>Discount</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="billTable"><tr><td colspan="8" class="empty-td">No bills generated yet.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- DISCHARGE -->
+      <section class="tab-panel" id="tab-discharge">
+        <div class="panel-head">
+          <div class="panel-tag">Module 07</div>
+          <h2 class="panel-title">Discharge Management</h2>
+        </div>
+        <div class="glass-form discharge-glass">
+          <div class="discharge-header">
+            <div class="discharge-icon">&#127968;</div>
+            <div>
+              <div class="discharge-title">Process Patient Discharge</div>
+              <div class="discharge-sub">Fill all fields to generate a complete discharge report</div>
+            </div>
+          </div>
+          <div class="form-grid g2">
+            <div class="fg"><label>Patient <span class="req">*</span></label><select id="dis_patient"><option value="">— Select Patient —</option></select></div>
+            <div class="fg"><label>Attending Doctor</label><select id="dis_doctor"><option value="">— Select Doctor —</option></select></div>
+            <div class="fg"><label>Discharge Date <span class="req">*</span></label><input id="dis_date" type="date"/></div>
+            <div class="fg"><label>Condition at Discharge</label><select id="dis_cond"><option>Recovered</option><option>Stable</option><option>Referred</option><option>Against Medical Advice</option><option>Deceased</option></select></div>
+            <div class="fg"><label>Follow-up Date</label><input id="dis_follow" type="date"/></div>
+            <div class="fg"><label>Discharge Type</label><select id="dis_type"><option>Regular</option><option>Early</option><option>Transfer</option><option>AMA</option></select></div>
+          </div>
+          <div class="fg mt8"><label>Discharge Summary</label><textarea id="dis_summary" placeholder="Final diagnosis, treatment given, home care instructions..."></textarea></div>
+          <div class="fg mt8"><label>Medications on Discharge</label><input id="dis_meds" placeholder="e.g. Paracetamol 500mg TDS × 5 days"/></div>
+          <div class="form-actions mt16">
+            <button class="btn-primary" onclick="dischargePatient()">Process Discharge</button>
+            <button class="btn-ghost" onclick="clearDischargeForm()">Clear</button>
+          </div>
+        </div>
+        <div class="section-label mt24">Discharge Records &mdash; <span id="disCount">0</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Discharge ID</th><th>Patient</th><th>Doctor</th><th>Date</th><th>Condition</th><th>Type</th><th>Actions</th></tr></thead>
+            <tbody id="disTable"><tr><td colspan="7" class="empty-td">No discharges recorded yet.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- end app-body -->
+  </div><!-- end page-app -->
+
+  <script src="app.js"></script>
+</body>
+</html>
