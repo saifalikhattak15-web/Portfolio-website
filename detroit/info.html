@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comedy Knockout Event</title>
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: #fff;
+      padding: 0px;
+    }
+.site-header {
+  background-color: #000;
+  padding: 30px 10px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+  width: 99.5%;
+  
+
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0% auto;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00e0e0;
+  line-height: 1.1;
+  font-style: italic;
+}
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.live-text {
+  font-size: 12px;
+  color: #fff;
+  margin-left: 3px;
+}
+.main-nav {
+  display: flex;
+  gap: 30px;
+}
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.main-nav a:hover {
+  color: #00e0e0;
+}
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-filled {
+  background: #00e0e0;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+}
+.btn-filled:hover {
+  background: #00c0c0;
+}
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      padding: 30px;
+      align-items: stretch;
+      justify-content: space-between;
+      margin-bottom: 40px;
+     
+    }
+
+    .timer {
+      flex: 1;
+      position: relative;
+      background-image: url('https://alpha.uscreencdn.com/assets%2Ftmp%2Fbackyard-ko-live-oct.1734531685.png'); /* Change this to your image */
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      margin-right: 30px;
+      width: 250px;
+      overflow: hidden;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6); /* overlay */
+      z-index: 1;
+      border-radius: 10px;
+    }
+
+    .timer-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+    }
+
+    .timer-content h2 {
+      font-size: 14px;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      font-size: 20px;
+    }
+
+    .countdown div {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 8px;
+      border-radius: 5px;
+      min-width: 55px;
+    }
+
+    .content {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .content h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: #bbb;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .start {
+      background-color: #00c9a7;
+      color: #000;
+    }
+
+    .purchase {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .related-videos {
+      margin-top: 40px;
+    }
+
+    .related-videos h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .video-card {
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      width: calc(25% - 15px);
+      min-width: 220px;
+    }
+
+    .video-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .video-info {
+      padding: 10px 15px;
+    }
+
+    .video-info p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ff2a8b;
+      color: #fff;
+      padding: 2px 6px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      border-radius: 3px;
+    }
+
+    @media(max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .timer {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .video-card {
+        width: 100%;
+      }
+    }
+    .logo-footer {
+  background-color: ; /* your blue */
+  padding: 20px 0px;
+  margin-top: 50px;
+  color: #fff; /* text color */
+}
+
+/* Container for text + logos */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Bold label */
+.footer-label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Grid of logos */
+.logo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Make logos uniform */
+.logo-footer {
+  background-color: black; /* blue background */
+  padding: 20px 0;
+  color: #fff;
+  position: relative; /* sits above the video */
+  z-index: 2;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 px;
+}
+.footer-label {
+  display: block;
+  font-size: 1.2rem;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.logo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+.logo-container img {
+  max-height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+
+  </style>
+  <link rel="stylesheet" href="enhancements.css">
+</head>
+<body>
+    <header class="site-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <div class="logo-area">
+      <span class="logo">Detroit<br>livestream...</span>
+      <span class="live-dot"></span>
+      <span class="live-text">LIVE </span>
+    </div>
+
+    <!-- Nav -->
+    <nav class="main-nav">
+      <div class="nav-item">
+        <a href="#">LIVESTREAMS ▾</a>
+      </div>
+      <div class="nav-item">
+        <a href="#">ON-DEMAND ▾</a>
+      </div>
+    </nav>
+
+    <!-- Buttons -->
+    <div class="header-buttons">
+      <button class="btn-outline">LOG IN</button>
+      <button class="btn-filled">TRY FREE</button>
+    </div>
+  </div>
+</header>
+
+  <!-- Main Event Section -->
+  <div class="container">
+    <div class="timer">
+      <div class="timer-content">
+        <h2>Starts on 07 October, 2025 at 20:00 BST</h2>
+        <div class="countdown" id="countdown">
+          <div><span id="days">00</span><br>Days</div>
+          <div><span id="hours">00</span><br>Hours</div>
+          <div><span id="minutes">00</span><br>Minutes</div>
+          <div><span id="seconds">00</span><br>Seconds</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h1>Comedy Knockout with David Ward - 7th Oct 8pm</h1>
+      <p><strong>Backyard Comedy Club</strong></p>
+      <p>
+        Comedy Knockout is a comedy competition where new acts battle it out for a chance at winning a coveted weekend spot at the Backyard Comedy Club, performing alongside some of the country's top comedians.
+      </p>
+      <p>
+        12 people go head to head with their best comedy material – then the audience votes who goes through to the next round until the funniest wins. Let the best comic win!
+      </p>
+      <p><em>Host and Referee: David Ward</em></p>
+      <div class="buttons">
+        <button class="start">Start Watching</button>
+        <button class="purchase">Purchase One Off – £10.00</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Related Videos Section -->
+  <div class="related-videos">
+    <h2>Related Videos</h2>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <img src="https://alpha.uscreencdn.com/images/programs/3380498/horizontal/a6d647f3-56c3-40fd-a2bb-64ac2c538db6.png?auto=webp&width=700" alt="Video Thumbnail">
+        <div class="video-info">
+          <p>LIVE • 21 NOV, 1:00 AM</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://alpha.uscreencdn.com/images/programs/3380491/horizontal/f7b4bea0-f5be-4986-9d5a-d6ac31bbea53.png?auto=webp&width=700" alt="Video Thumbnail">
+        <div class="video-info">
+          <p>LIVE • 9 OCT, 8:00 PM</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://alpha.uscreencdn.com/images/programs/3443167/horizontal/3e5131fa-c933-4d66-804f-655e00c220a3.png?auto=webp&width=700" alt="Video Thumbnail">
+        <div class="video-info">
+          <div class="tag">ALL IN COMEDY</div>
+          <p>LIVE • 16 OCT, 11:30 PM</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://alpha.uscreencdn.com/images/programs/3443197/horizontal/49527330-4201-4bf8-a6d0-f36bc4bcf798.png?auto=webp&width=700" alt="Video Thumbnail">
+        <div class="video-info">
+          <div class="tag">FRIDAY NIGHT COMEDY</div>
+          <p>LIVE • 1 NOV, 12:45 AM</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Countdown Timer Script -->
+  <script>
+    const targetDate = new Date("2025-10-07T20:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+<footer class="logo-footer">
+    <div class="footer-content" >
+      
+      <strong class="footer-label" >Available On:</strong>
+      <div class="logo-container">
+        <img src="roku.png" alt="Logo 1">
+        <img src="firetv.png" alt="Logo 2">
+        <img src="Androidtv.png" alt="Logo 3" >
+        <img src="Appletv.png" alt="Apple TV Logo" style="height:25px; width:auto; ">
+        <img src="samsung.png" alt="Logo 5" style="height: 150px; width: auto;">
+        <img src="lg.png" alt="Logo 6">
+        <img src="apple.png" alt="Logo 7" >
+        <img src="android.png" alt="Logo 8">
+        <img src="yt.png" alt="Logo 9" style="height: 100px;width: 200%;">
+        <img src="facebook.png" alt="Logo 10">
+        <img src="alexa.png" alt="Logo 11">
+        
+      </div>
+    </div>
+  </footer>
+  <script src="enhancements.js"></script>
+</body>
+</html>

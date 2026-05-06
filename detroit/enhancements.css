@@ -1,0 +1,158 @@
+
+:root{
+  --bg:;
+  --surface:;
+  --muted:#9aa6ab;
+  --accent:#00C2B3; /* teal accent */
+  --glass: rgba(255,255,255,0.03);
+  --glass-strong: rgba(255,255,255,0.04);
+  --card-shadow: 0 8px 20px rgba(2,6,10,0.6);
+  --soft-radius: 12px;
+  --ease: cubic-bezier(.2,.9,.2,1);
+}
+
+/* Apply dark background to body and default text colors while preserving site-specific classes */
+body, html {
+  background: ;
+  color: #e6eef0 !important;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.45s var(--ease), color 0.45s var(--ease);
+}
+
+/* Links and accents */
+a, .accent, .btn-accent {
+  color: var(--accent);
+  transition: color 0.25s var(--ease);
+}
+
+/* Buttons */
+button, .btn {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #e6eef0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), background 0.28s var(--ease);
+  box-shadow: var(--card-shadow);
+}
+button:hover, .btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 34px rgba(0,194,179,0.12);
+  background: linear-gradient(180deg, rgba(0,194,179,0.06), rgba(255,255,255,0.02));
+  border-color: rgba(0,194,179,0.18);
+}
+
+/* Cards and sections */
+.card, .panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: var(--soft-radius);
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+.card:hover, .panel:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0,194,179,0.12);
+  box-shadow: 0 30px 50px rgba(2,6,10,0.65);
+}
+
+/* Images */
+img {
+  transition: transform 0.55s var(--ease), filter 0.55s var(--ease);
+  border-radius: 8px;
+  display: block;
+}
+img:hover {
+  transform: scale(1.09) translateY(-4px);
+  filter: saturate(1.09) contrast(1.05);
+}
+
+/* Nav bar subtle glass */
+.navbar, header, .site-header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px);
+}
+
+/* Input focus */
+input, textarea, select {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #e6eef0;
+  padding: 10px;
+  border-radius: 8px;
+  transition: box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 6px 24px rgba(0,194,179,0.06);
+}
+
+/* Fade-in on scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Small glowing accent underline for headings */
+h1, h2, h3 {
+  position: relative;
+  transition: color 0.25s var(--ease);
+}
+h1::after, h2::after, h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(0,194,179,0.2);
+  box-shadow: 0 6px 18px rgba(0,194,179,0.08);
+}
+
+/* Subtle hover highlight for list items / nav links */
+.nav-link, li {
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+.nav-link:hover, li:hover {
+  transform: translateY(-4px);
+  background: rgba(0,194,179,0.03);
+  border-radius: 6px;
+}
+
+/* Custom pointer that slightly follows cursor for a premium feel */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s linear, background 0.18s linear, width 0.12s linear, height 0.12s linear;
+  z-index: 9999;
+  background: rgba(0,194,179,0.95);
+  mix-blend-mode: screen;
+  box-shadow: 0 6px 18px rgba(0,194,179,0.14);
+}
+
+/* When hovering interactive element enlarge the cursor-dot */
+.cursor-dot.active {
+  width: 26px; height: 26px; background: rgba(0,194,179,0.14);
+  box-shadow: 0 10px 36px rgba(0,194,179,0.12);
+}
+
+/* Respect existing images and icons sizes */
+svg, .icon { transition: transform 0.28s var(--ease); }
+svg:hover, .icon:hover { transform: translateY(-4px) scale(1.04); }

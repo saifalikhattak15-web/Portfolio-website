@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Streaming Platform</title>
+  <style>
+    /* RESET & BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: black;
+      color: white;
+      overflow-x: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    body.loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(0, 168, 255, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 80px;
+      width: auto;
+      filter: brightness(120%);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+      filter: brightness(130%) drop-shadow(0 0 10px rgba(255,255,255,0.5));
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 1.1rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: ;
+      opacity: 60%;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      padding: 0 20px;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: yellow;
+      color: black;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      background: #ffea00;
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+    }
+
+    /* FOOTER */
+    footer.logo-footer {
+      background: black;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .footer-label {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      margin-right: 80%;
+      display: block;
+    }
+
+    .logo-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .logo-container img {
+      max-height: 45px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(1.2);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.2);
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="detroit.png" alt="Detroit Logo">
+    </div>
+    <nav>
+      <a href="about.html" >About</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="platforms.html">Platforms</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="media.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1 style="font-style: italic;">LOVE STAND-UP?</h1>
+      <p>
+      Experience the magic of the UK comedy scene from your sofa
+      </p>
+      <a href=""><button class="btn" onclick="window.location.href='startwatching.html'">Start Watching</button></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="logo-footer">
+    <div class="footer-content">
+      <strong class="footer-label">Available On:</strong>
+      <div class="logo-container">
+        <img src="roku.png" alt="Roku">
+        <img src="firetv.png" alt="Fire TV">
+        <img src="Androidtv.png" alt="Android TV">
+        <img src="Appletv.png" alt="Apple TV">
+        <img src="samsung.png" alt="Samsung">
+        <img src="lg.png" alt="LG">
+        <img src="apple.png" alt="Apple">
+        <img src="android.png" alt="Android">
+        <img src="yt.png" alt="YouTube">
+        <img src="facebook.png" alt="Facebook">
+        <img src="alexa.png" alt="Alexa">
+      </div>
+    </div>
+  </footer>
+
+  <!-- TRANSITION SCRIPT -->
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    document.querySelectorAll("a[href]").forEach(link => {
+      if (link.getAttribute("target") === "_blank" || link.getAttribute("href").startsWith("#")) return;
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        document.body.classList.remove("loaded");
+        setTimeout(() => (window.location.href = href), 400);
+      });
+    });
+  </script>
+</body>
+</html>

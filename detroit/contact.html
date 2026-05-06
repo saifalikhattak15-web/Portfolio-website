@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Streaming Platform</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+    body{background:linear-gradient(180deg,#0a0a0a,#111);color:white;animation:fadeIn .8s ease-in-out;}
+    header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 60px;height:70px;background:#00A8FF;z-index:100;}
+    .logo img{height:90px;transform:translateY(10px);}
+    nav a{margin-left:30px;text-decoration:none;color:white;font-size:1.1rem;transition:color .3s;}
+    nav a:hover{color:yellow;}
+    section{padding-top:120px;text-align:center;}
+    h1{font-size:2.8rem;margin-bottom:15px;}
+    p{font-size:1.2rem;margin-bottom:30px;}
+    form{display:flex;flex-direction:column;gap:15px;width:90%;max-width:400px;margin:0 auto;}
+    input,textarea{padding:12px 15px;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:white;}
+    input:focus,textarea:focus{background:rgba(255,255,255,0.2);outline:none;}
+    button{background:yellow;color:black;padding:12px 30px;border-radius:30px;font-size:1.1rem;cursor:pointer;transition:transform .3s;}
+    button:hover{transform:scale(1.1);}
+    @keyframes fadeIn{from{opacity:0;transform:scale(1.05);}to{opacity:1;transform:scale(1);}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="detroit.png" alt="Logo"></div>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="platforms.html">Platforms</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section>
+    <h1>Contact Us</h1>
+    <p>Have questions or feedback? We’d love to hear from you.</p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</body>
+</html>

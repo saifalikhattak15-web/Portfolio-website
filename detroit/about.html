@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Detroit Live Stream</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    :root {
+      --accent: #ff4444;
+      --bg-dark: #0e0e0e;
+      --text-light: #f9f9f9;
+      --text-muted: #cfcfcf;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(0, 168, 255, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 50px;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      filter: brightness(120%);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+      filter: brightness(130%) drop-shadow(0 0 10px rgba(255,255,255,0.5));
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 1.1rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      height: 100vh;
+      padding-top: 70px; /* prevent overlap with navbar */
+      background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQA/AMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAADBAACBQEGB//EAEQQAAEDAgIFCQQIAwgDAQAAAAEAAgMEERIhIjFxcrEFIyRBUWGBocETMnOyFDNSYoKRotElNOEGQmN0g5LCw7Pw8dL/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMEAAX/xAAjEQACAgMAAgICAwAAAAAAAAAAAQIRAyExEkEEUSJhEzKB/9oADAMBAAIRAxEAPwDQMuCIZ2SFVOZonsBvdpsqyPJipgf7zDwv6pd2dXP9yJ7vIj1UFE9p5GjylZRj22iLhxJ8yssUzZGSOORa3t7wPVeiq3YYmv8AtsIHg4/t5rDw4BIPttI8x+y1wSoyzdibaXSDb3u0O97tXXU+HROrXrRw7C6N/wBkM4BRmm1reywVUiZxlIwEWTtPTsBzF/FDi98bqaj90bPQLnFGjGaNFTsxggW/EvUUDA0i3b2rzVI6xC2qZ2IBnaQoSijbCbo9PHJZqz694e0tJt4qklThiee8lZs9R0l47RdSjAopszq5jXB4xHRbfJy8/WU7cV8Ts7/3u8rYq5NJ+wrJqXXwbnqtEYKjPlm2ZrqcdTnf7kJ0BGpzv9ybkOX5Ibs3fht5p/FGSXRdsB63O/3I8VOMQc4k9WbirM1/gHoixNvED98eqRoU1+TactkZfrIIzXrqOQxxhoJGE2yK8u04JoH9sbT+WXotqObSph9p+H8rD1WaaNEJm4ytNrFx8SsP+0RdLTY2m5BAUgkxCJv3i3yKIWe3gqogLkudh2gj91Ktl1ko89SzOIDvHV/Veh5FMvKNSymja1zybAHJH/s9yDT1FEHzQ4g6RzLgDty1r13Jn9laGBzZaP2sEjSHXDxn5ld5WzW/lQxw/Zj8t/2dqOT6YSSMbhOV2uuvIVlMG3BdbwX07+0r6r6P7Od2ONuliFs9ua+d8qMtiIaCLawQU1qy3xcksmK5tf4eaqYWtJOLyWc4AvFneS0KoF5IAB22We4OD/dGXZZaIsz5jKmFjrulXX8E5JI650eCXe9x6reITnkZErFnlvVrQTfrR3F/bYbwQXHP3vNAyzR9ka7naPdI/QEtELmuf2REeY/ZT2tqijb2PI/SFRhtS157W281FI0ye2ZVbpcnQv7HvHnf1WW9mKNx+ywnzstOR2LkePuqXj9LUgTZr90cQtEFoSxGZuGNh7Wj5QuxMyv3eqYr2WYzvhiP5xhUAtAzY3i5W+hUSI3e/YEyzWd1Lwi8T9oHzJiIaZ3UastGVGg12E3/APdS1qV1mRHvWSReQjafJaEbsIhHcErhZojMdnn5s7z+ASBlvMNwcEOWXJo738ECM2lY77jUyxiPOrB1Lrl2x3BZ1R9XHuepT9UdE7XFJ1zMLQPuj1RUNE55bE5vc8BwCHLqG6OARKj6obAh1HuM3RwQcSLnYRgvg3PRN07bUTd9nnjSrDa3wz8pTlPlyW49kkf/ADSTQvkaRN2U57W2/IrQgfz/ACa3/ELv1D9lkCS8VOPuu4rQD8PKHJje2MH9TlCa0VUtmhTtwVeHsn9Cm6L+Yk73kfm0JVzrcrRj/EJ8lell6VN92SN35sUGiqlaPQcmRD6IWl5aRLdpDb2IIIW1TVlRG9sft43A31R4bW6/eWFTzGNkloWyWeD/AHL9X2iOq6b9tTVDHB1Cy2s4447dfeotbZsjDyirC8t1LnRuBlcSRbRsP3Xiq72RiJbLISHWc3E389S1+U6enaXGKnjjc8AEtwAcdiwZ34MQbEGj3iA5vd2HsSq7PRwxUYUjFqzHHiIc657SFkuN5Wn2ltfUOxegneY6doNOb3Oot6zl19iy3nHK5wgINusN/da8bM3yEebn9337pdx+8jyh4Jv8yC2ORxBGq/2lY8PJd0gLtt0MjNOTMc2//wCkoXOv/VcZ5qun06efBWxj7M5HnZXkkwUdSO1ZPKE166T47uKNWz9GkHegomiUtlGyX5G2Vbh+lqzJZLOcO1Msf/BX91Vf9IWbI+7b9ouqwjoS+mlytoyNHZDD/wCNqCT0eLY3i5E5ad0w7kfyNQSeix7rOJVUuCqRaDOCXfbwcmYxzsiWps6eb4jeDk2w2nm2nimSC8lGif5wt28EQP56MfdHBLY+mv8AFQyWmG4PlCdREeejrXabNj0IusIj931QYJdJp7AVRz+aaOy6r46MrzOxqqdpnaeJQOUc7bjfVWq386NrvmKFXuzOxqXx0F5WxSpHRv8ATHEoFVlDFsHBMVBvQ/6I+cperPMxfh+VTkh4zsI11i74Dj+gpmmdbkaoPY6L/l+6SDtF/wDln/KmKd1+SKwd0Z/UpTQ6kMMk5qL7oPFak8mDlag7oI+JXnopNFo7Fq8pzez5Wg+7BGPJSnEupbNqaW3KsXfdSOe1VPsh+ULJnqb8pMPceCtLUYZr/aihP6QpeBeD0euZVsjixuyvI1ty4BtiDr8k66oDbPjw3LbOwuvcfkvLwVkwa8RMLhYXsQEYySuaHspnXA/uuF/y7FmlD8mex8avBWTlflGzsL5C0jqBC83Xcpvxc09wLR14XahbsWhXVxFmPikDr3wvIzVaeUGniDgxkhOTW4Rrdl1rkqKye6ToTqRK7Ex/KDTfKwY0KQFhlLhMX3HW5qYnJIBa4Yiet2o/kh0WN0813BzRE4gB2vV2p0TmnR5SVjSAcd8u0KlJEJJ2xF2gTmck1WseHnEAL555pYyNcWts0+SvZ406U9lKmKMkhs1x1C4KQc1oNvVO1NPdwwho8Uo+IscQ61+5cZ8yd8PT1816uV3bM4+aZr5ubt3rLqn8+/f9UxXv0G7FahPLYSGS3I84/wAccEjI6zT+aPTu/hVT8ZnApZzsk6WhXI1OWz0yXuwjyCET0Rm6z1U5ZPTqjfHBDxdDHw2eqdLgt6GaE824dszeBVy+8kp7bnzS/Jz+bHxhwCq1/vKkFolOWzXDulSHal5JrzHdHyhVEnSZ/H1Sc0nOO3W8AqJEJSsYhky8ChmTQb4oLX82hl+Y2piSZqVj9Mbx+YoPKDucfsaq1rtW8fmKFXu507BwXBsvMeg/6P8A2JetPR4trflRJj0D/R/7ECrPMRbWfKVKXCsJbLNOhJ/l3cCiUbrclVnw4z+tL35qT4B4IlI7+H1nwW/MFOa2VjLRWB3uhPcqy35VB7Ioh+gLMhdpN8E1yk+3Kj91nyhTkuF1LYxJNesDuxqNVzc/Ge2BhWbK/pR3Uask5yn/AMu3iUrReEjd5JqSHSWcQbCwBtda0Qe+Mn2zxnkLNFvJeZ5GqWxOlxvDWuZaxBNzfsW7FWRyMylGHua5ZMi/JntfFaeNErKYyC/t5AdVyGlZlTRS2afpj7DPKNoT1TU4BzLmkHsuM+/IJOV9UWEjr7ZLBTNEjPq4p22MVYbm5sQOoX7Ar8jNmxzvnqgB9Hc3WBfV234Jhxqi4EuAHfMezNHopJIhO507SRC/LE7q8ESDjbs87ViNwyqX3YLDnAQEhUU0bJXCOrD2g2BuASn6meQNaWu1NAsJCNQ2JQvlMjHSNJa25Ie4OFlWPDz86i2Le6HYpHXwm13BLOeSc2gnuWkfYPktHG0E3PV1XPBIyiNzyWFoHimMmSL+x+odzjt4pmuOi3YEhKc37x4pmsOizYFoRlbC0p/h9T8RnApbEi0h6FVb7P8AkgMOk3b6pkdY/wArO6ZU/EVcXQm7jEPlM9KqfiFcDuiN3GcFRdEb0MUD9AfG9AhRPzKnJ7tFvxj8oQYXZ+ITw4Rm9mli56p8UpO7pQ3R8oRYnc/P+JKTHpI3R8oTkrLNformLnG7QhYtDxVozz0W8OKNgNCsfkN48Sg1judfut4KVjshvO4lBq3c4dg4LrB7DzO/h4+B/wBiDVHo8e9H8pVpT0D/AEf+xCqjzDN6P5Spy4Vh0s483J8E8FeiPQ6j4PqEB50H/BPBXoTzM3wvUJH0dPRSJ2k3aj8pO/ik21o/SErA7SbtCLyg7+I1G+klwvFkkd0jwR6t2dN/lx8zkpi58o1ScqX4X/IpSsZUx3kmaCORwqLYXNtmQOK16eegY3DC1xPfUDy0Vh8mVEkDnmNjn4m2IBFtfXdaNRXVLcMjIpIyb4hG8Xy7bbVlyr8z2fi5IrEmN1NRACAHt1X0pBccEB/KUYjLWuiyGWkEqzlLlCoa0h0wH35bAWRCyYYbPYH4RkHddlPxNH8vlwYknhuRiAzsDjb+yvSilMVU+SpeAIXEYXtzuD3JFwnDm84MWs45TY2THJTau84e7FH9Hdc+1QoV5HyjIlggdYtq5HGwuMbcvJDkpoI8AbVvu7I6bTbInVbuVcNRI0uAsA7WZO7+qhM0ULG2boi1g/Xnf1VTDKm9oF7KCN+P6didYjq6wQfJZ0rML9B+MdqYqHPtZ8bgDfO91Q1EjrEYrWtrRRjyON0ElPvbSmKk+5sCUecneKPUHNuwLSZLC0p6JVbzfVCYdNm8FalPMVPgqRHno98cUUAY5QPSKj4hUxdEbuM4IVUedl+IVCeYbuM4J/Yjehjk05s+M75Qg05zG8Fbk45D4j/lCFAdNu8E8OE59HYTzk+x3BAnPSRujgFeA6U+woNQelDdb8oTsmulSdBWiPPxbwQr6CJB/Mw7zeKFhoZrDofiPFBqjp/h9FaqOgd53FDnOn+EI3oVBpT0BvwXfOhVJ5lu1nyldlPQGfCd8ypVHmhtb8pSMqkRx0ZPhq9Eebl+C5BedCT4f7K9GdB3wnJX0ZcOQHSbtVqs9NqN5DgOkzeClSelz754pWPEgPOlGnOjSfD9SlgdJyPP9XS7nqUpWL2NcmOYJXl7i3RsLOtdOS10URAbI54IzAe0EG+6s2ikwPzc0C1ziv6LSu2WNokIlY3MXOr8wFnn/Y9T48n/ABUgDq+JzgA1wtlb2oNvJFkqqbFlI8gG+IOaL+SoKVmXsfZWI1Ys/NE+ie2I9rGwNPXcKei0XkroF1TC6S4ndY67ubfgneT5YXQ1BfO8cy/XKM8tWQSTqeeNznNeBnbRdbuTvJT5CZy17C4xOviceztAXUjoSlezKknja0sjeWAEknGL3t3pepdEwlpke6xIuXjPyTkxlcCHFpO0oFQXvc95waRJzBRSIZWKtkgLXnSLmi7bvGZuO7sugufCCbsDu8PKkzQTZxYD3X/ZLmMNNg4eCYxyk0MPOR2+qJMcxsQic/FWcdIbFoMoamPMz7qrEedi3xxUpToT7q5AekQ744oistUHSfvldvzI+GxClPv7xVyeabuNTCsNQHR8ZPlCpCdIbV2iPNj8fBDjOmN5PF6El0ZgOc26VSoPShujgFIDoTbFWpPSvwjgE16FS2DJ0EWnPSYd5vFAvoeKLTHpcG8FyYaD1J0BvO4oNQdW6Fac80N4oUxz/CFzYIoPIehN+G75ghz/AFTdreC649Cbuu4oc55sbWcEjHRx50X7v7IlIf8Axv4ILzzcm7+yvTHMbHcEvsK4dpzpx7yrOefk3ipTnnId5Uk+tfvFBjxOtOaPL9XT7PUpZpRnnmoNh4oDF6d7WuPtL4bJwVsMcNo8F79bkhG5zblsgZlrN81o0kkrGX9rG5x++b28QoT6b8Evxqw8c0EkQL3tDjrAeNSKZGPZhjkkj7MNig+3ncCAZDY2ykJHklZXVLSHBkhAGZEmSnRreSl9js9w52KVxa1187DV4I1D9GDpC14aDC/FY39clnsbUgsxssWkXvKtLkx9U+eRpe3SjNz7U2HkuoMXfoy5Po/swWN19eJ9j5oD2Bzbmlkw9pL7cU62rfExrHyRvtkbl3nkl5qqcll/YsIIfcE7exFEp+PsVhpmyS85FJgDXHMO6mkjzsk3Ojv9WPFxR7T4gGvu43thcUuWudm4tJ7SUTJNr0jpOvarPOrYqOPFdcdWxXMYanOjJsXIjzsW31XKf3X7FIjzse0cUwpyU6LtpV3HQbutQ3HRO1W/ufgC44LRnQ8H8EOI5t2lXpDzR3HIURzHimjwR9YeA6M276qVJ6Qd1vBVhOhJsHFSp/mfy4J3wC6DccvFEpj0mLeHFCd17USmPSYt4cUoXwLOdH8RQZjmNivOdW85CedWxMxY8DO/k27rvRUlPNf7eCjj0Jv4vRVkPNeDeCQcqTzb90IlOfd8eCC46LleI6DdqHsPovTHTh2oTvfdtV4jpMQz7x2oMKLMOfiiOPNxeKE05+Ku76uLxXDFm2IAIvsTsFM99iwSgHL3etZ5GiLODT2lGjMwsAW7bqUumrFJJbNBvNjA185sTis0E9XcrPqnRWbMHOuOsWOv9kqPa+zt7Vlwb5l37LohnkbnJGb9V3fsptGlSb4FD3yubhimbdwNwCbZpugcxk72H2mLAcje/V1JSSKaSU29mC44r3PWdia5MiEcriZmYjGRkw9iBSLYg11PDTt+kwOLzfEXh3b/APECeemebtYbEDrd+6K9jGiwlBHVaP8AqqOaHFjGyZuIGcdtZ2opEnJ/oC+SFkpMbNK5sSXX4pN5aTouIHeU5JFHfTkdcZfV/wBUB8MV8pR+If1RM8kyN0Ri7SVwgXzV/Z4rG4F+oqOaGmxu7uaFooyWdjtZwHZb81yP32u71doacg4tNxrafKy61gAsHgduWtchQQGgO9WPoEZkdjbGNLsvkhuhLXOAubDWOrNNR1kp/qZNw8QqudZ9kQMeI3D2brEdmrNULbm+efaFyAXbkD4cV2o+ucexyq3IjInPqXcy4ixAudadClS33h2K8bbSg9hC6WagNQz/APfyV8gLtBLnPuSOoLqOsG/We4n0QpfeZsCucyCQRc3z8FCwXxk3NwA0a0rCiSfyx3j6KYMUeH7oPkquuYA0gglxujB3syHBocMsgL5IBFb4pXD7RRWtwtPcbKjwC9pia7D1B1rjuRmtJ6gM/TJBDMpGAyVrXdWie5UkbYjvCO+2Mgxvc05ggZ+Ks2MPYWPaQBpNfhNh3HajQExZmtWB5pniieyF/rWW8b8F32TLZSNPc66FB8gAdZgJAI70xHUR4bCME92K6DLGMOXouRgNbrsdn9VKS2aMcnQ4Iza/sXkH7RcoKprAWB2EjKwkcPVLCR/2hbvauuly+rY/vSFvOh5ty1pJmdcdQtwzR6K/0th9lMAAb5O7LeqyzKcrdQv7urzRaOqfHOHEDCb527uy66hlk+yOiLgQ2kfhF9QcqyjAR0d4y62FWbWOY0NBJAHW3+qrNWl7LEkbGf1QoEpRYu+MuzETxsBQHtDTZ2Np7CFaR56iTtFkG5OsA7VxFtDjta4FFFczssF0a1FERSy4TZRRE4s03C4oomAWauudY6h4hRRMhGRpuOrwCu3YuqIgI/WqXUUXBKldbmFFEgx0tB1qhAGpRRcccC4daiiDGIpewUUShRwlVCiimy0TqiiiQYisxRRcODfrKG5RRcxQRVSuKICs/9k=') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      padding: 0 1rem;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-shadow: 0 3px 20px rgba(255, 68, 68, 0.6);
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 10%;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    section p {
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .highlight {
+      background: rgba(255, 68, 68, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      section { padding: 4rem 5%; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">
+      <img src="detroit.png" alt="Detroit Logo">
+    </div>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="platforms.html">Platforms</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>About Detroit Live Stream</h1>
+      <p>Where laughter takes the mic — streaming Detroit’s best stand-up comedy live to the world.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTIONS -->
+  <section id="mission">
+    <h2>Our Mission</h2>
+    <p>
+      Detroit Live Stream exists to spotlight the city’s comedy culture.  
+      We broadcast live stand-up shows, local open mics, and rising stars who bring humor and honesty to every stage.
+    </p>
+    <div class="highlight">
+      We’re not just streaming laughs — we’re sharing Detroit’s voice, one punchline at a time.
+    </div>
+  </section>
+
+  <section id="streams">
+    <h2>What We Stream</h2>
+    <p>
+      Our lineup includes comedy nights, interviews, behind-the-scenes content, and spontaneous street shows.  
+      Every stream captures the raw, electric atmosphere that makes live performance unforgettable.
+    </p>
+  </section>
+
+  <section id="join">
+    <h2>Join the Experience</h2>
+    <p>
+      Whether you’re watching from home or performing on stage, Detroit Live Stream connects you to the heart of the action.  
+      Follow us and be part of a community built on laughter, creativity, and connection.
+      <br><br>
+      Follow <strong>@DetroitLiveStream</strong> for updates and live events.
+    </p>
+  </section>
+
+  <footer>
+    © 2025 Detroit Live Stream — Bringing Detroit’s laughter to the world, one mic at a time.
+  </footer>
+
+  <script>
+    // Fade-in on scroll animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
