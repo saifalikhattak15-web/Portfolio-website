@@ -1,0 +1,1006 @@
+/* =====================================================
+   GLOBAL CSS (ALL PAGES)
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  color: #333;
+  background: ;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.gray {
+  background: #f5f6fa;
+}
+
+ header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background:#0a3d62;
+  padding: 20px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color:#80deea;
+  letter-spacing: 0.5px;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #eaf4ff;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* Hover underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(135deg, #4dd0e1, #80deea);
+  left: 0;
+  bottom: -6px;
+  transition: 0.3s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color:#4dd0e1;
+}
+
+/* Active link */
+nav a.active {
+  color: #80deea;
+  font-weight: 600;
+}
+
+/* Mobile menu icon */
+.menu {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #0072ff;
+}
+@media (max-width: 768px) {
+  nav {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #ffffff;
+    flex-direction: column;
+    width: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: none;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+}
+
+
+/* =====================================================
+   HOME PAGE CSS
+===================================================== */
+
+/* --- Hero Section --- */
+/* =====================================================
+   HOME HERO (WITH DARK OVERLAY)
+===================================================== */
+.hero {
+  position: relative;
+  height: 90vh;
+  background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1470&q=80')
+    center / cover no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Dark overlay to reduce brightness */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); /* adjust brightness here */
+  z-index: 1;
+}
+
+/* Keep text above overlay */
+.hero h1,
+.hero p,
+.hero .btn {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+/* Button */
+.btn {
+  background: #f4511e;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #d44110;
+}
+
+
+/* --- Home Features --- */
+.features-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  max-width: 280px;
+}
+
+.feature .icon {
+  background: #f4511e;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto auto 15px;
+}
+
+/* --- Home Services / Offer --- */
+#offer h2 {
+  margin-bottom: 50px; /* space below heading */
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* =====================================================
+   SERVICES IMAGE HOVER EFFECT
+===================================================== */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  filter: brightness(0.6); /* dark by default */
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* On hover – brighten image */
+.card:hover img {
+  filter: brightness(1); /* normal brightness */
+  transform: scale(1.05); /* slight zoom (premium feel) */
+}
+
+
+
+/* =====================================================
+   HOME PAGE – FAQ
+===================================================== */
+
+
+
+ .faq-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.faq-left {
+  text-align: left;
+}
+
+.faq-item {
+  margin-bottom: 35px;
+}
+
+.faq-item h4 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.faq-item p {
+  color: #555;
+  font-size: 15px;
+}
+
+.faq-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  filter: brightness(0.6); /* dark by default */
+  transition: filter 0.4s ease, transform 0.4s ease;
+  margin-top:25px ;
+}
+.faq-right:hover img {
+  filter: brightness(1); /* normal brightness */
+  transform: scale(1.02); /* slight zoom (premium feel) */
+}
+
+/* Mobile ONLY – stack */
+@media (max-width: 900px) {
+  .faq-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   ABOUT PAGE – HERO OVERLAY
+===================================================== */
+/* =====================================================
+   HERO SECTION FIX (TEXT VISIBILITY + CLICK FIX)
+===================================================== */
+/* =====================================================
+   HOME HERO – FINAL FIX (DO NOT DUPLICATE)
+===================================================== */
+
+.hero {
+  position: relative;
+  height: 90vh;
+  background-image: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1470&q=80");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  isolation: isolate; /* 🔥 VERY IMPORTANT */
+}
+
+/* Dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: -1; /* stays behind text */
+}
+
+/* Hero content */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+/* Text clarity */
+.hero-text h1 {
+  color: #ffffff;
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  color: #eeeeee;
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+/* Button */
+.hero-text .btn {
+  display: inline-block;
+  background: #f4511e;
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  text-decoration: none;
+}
+
+.hero-text .btn:hover {
+  background: #d44110;
+}
+
+
+
+.about-hero {
+  padding: 95px 8%;
+  background: #fff;
+}
+
+.about-hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Left text */
+.about-text h1 {
+  font-size: 48px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #444;
+  max-width: 520px;
+}
+
+/* Small red line above heading */
+.section-line {
+  display: block;
+  width: 60px;
+  height: 6px;
+  background: #f4511e;
+  margin-bottom: 20px;
+}
+
+/* Right image */
+.about-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 900px) {
+  .about-hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-text p {
+    margin: auto;
+  }
+
+  .section-line {
+    margin: 0 auto 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   ABOUT PAGE – CUSTOMERS OPINION
+===================================================== */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title span {
+  display: block;
+  width: 120px;
+  height: 6px;
+  background: #f4511e;
+  margin: 0 auto 15px;
+
+}
+
+.section-title h2 {
+  font-size: 32px;
+  color: #3a140a;
+}
+
+/* Testimonials */
+.testimonials {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.testimonial {
+  background: #f8f8f8;
+  padding: 40px 25px;
+  border-radius: 12px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-8px);
+}
+
+.testimonial img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.testimonial h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #3a140a;
+}
+
+.testimonial p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* =========================
+   PRICE PAGE
+========================= */
+.price-section {
+  max-width: 1100px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+/* ===== PRICE TITLE ===== */
+.price-title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+/* 🔥 ORANGE LINE (NEW / FIXED) */
+.price-title .section-line {
+  display: block;
+  width: 160px;
+  height: 6px;
+  background-color: #ff3c00;
+  margin: 0 auto 18px auto;
+  border-radius: 2px;
+}
+
+.price-title h1 {
+  font-size: 42px;
+  letter-spacing: 4px;
+  color: #3b1f14;
+}
+
+/* ===== PRICE LIST ===== */
+.price-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* LEFT SIDE */
+.price-left {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  max-width: 70%;
+}
+
+.price-left img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: brightness(0.9);
+  transition: 0.4s ease;
+}
+
+/* ✨ Hover effect */
+.price-item:hover img {
+  filter: brightness(1);
+  transform: scale(1.05);
+}
+
+.price-left h3 {
+  font-size: 22px;
+  color: #3b1f14;
+  margin-bottom: 8px;
+}
+
+.price-left p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* RIGHT SIDE */
+.price-right {
+  font-size: 22px;
+  font-weight: bold;
+  color: #3b1f14;
+  white-space: nowrap;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .price-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .price-left {
+    max-width: 100%;
+  }
+
+  .price-right {
+    align-self: flex-end;
+  }
+}
+
+
+/* =====================================================
+   SERVICES PAGE CSS
+===================================================== */
+/* SERVICES HERO */
+.services-hero {
+  padding: 100px 20px 30px;
+  text-align: center;
+}
+
+.services-hero h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+  color: #3b1f14;
+  margin-bottom: 15px;
+}
+
+.services-hero p {
+  max-width: 600px;
+  margin: auto;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* SERVICES SECTION */
+.services-section {
+  padding: 40px 20px 80px;
+}
+
+.services-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+/* SERVICE CARD */
+.service-card {
+  background: #fff;
+  border-radius: 16px;
+  padding-bottom: 25px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+
+/* IMAGE EFFECT */
+.service-img {
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.service-img img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  filter: brightness(70%);
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(100%);
+}
+
+.service-card h3 {
+  margin: 25px 0 10px;
+  color: #3b1f14;
+}
+
+.service-card p {
+  padding: 0 20px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .services-hero h1 {
+    font-size: 38px;
+  }
+}
+.section-line {
+  display: block;
+  width: 180px;
+  height: 6px;
+  background: #ff3c00;
+  margin: 0 auto 18px;
+  border-radius: 2px;
+}
+.offers-section {
+  padding: 70px 20px;
+  background: #f9fafc;
+  text-align: center;
+}
+
+.offers-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.offers-subtitle {
+  color: #666;
+  margin-bottom: 50px;
+}
+
+.offers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.offer-card {
+  background: #ffffff;
+  padding: 35px 25px;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.offer-card h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.offer-card p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.offer-card .offer-btn {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.offer-card .offer-btn:hover {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+.offer-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #ff4d4f;
+  color: #fff;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.featured {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  color: #fff;
+}
+
+.featured h3,
+.featured p {
+  color: #fff;
+}
+
+.featured .offer-btn {
+  background: #fff;
+  color: #0072ff;
+}
+
+
+/* =====================================================
+   CONTACT PAGE CSS
+===================================================== */
+
+.contact-section {
+  
+  padding: 100px 20px;
+}
+.section-line {
+  display: block;
+  width: 180px;
+  height: 6px;
+  background: #ff3c00;
+  margin-left: 27px;
+  border-radius: 2px;
+}
+.contact-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+/* LEFT */
+.contact-left {
+  flex: 1;
+}
+
+.contact-left h1 {
+  font-size: 48px;
+  letter-spacing: 4px;
+  color: #3b1f14;
+  margin-bottom: 25px;
+}
+
+.contact-left p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.contact-left label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
+.contact-left input,
+.contact-left textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.contact-left textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.contact-left .btn {
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+/* RIGHT */
+.contact-right {
+  flex: 1;
+}
+
+.contact-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-left h1 {
+    font-size: 38px;
+  }
+}
+/* MAP SECTION */
+.map-section {
+  margin-top: 80px;
+}
+
+.map-container {
+  width: 100%;
+  height: 400px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(10%) contrast(1.05);
+}
+
+
+
+/* =====================================================
+   FOOTER (ALL PAGES)
+===================================================== */
+footer {
+  background: #0a3d62;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+/* =====================================================
+   RESPONSIVE (ALL PAGES)
+===================================================== */
+@media (max-width: 768px) {
+  header nav {
+    display: none;
+    flex-direction: column;
+    background: #0a3d62;
+    width: 100%;
+  }
+
+  header nav.active {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .features-container,
+  .cards,
+  .faq-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* =====================================================
+   SCROLL ANIMATIONS (ALL PAGES)
+===================================================== */
+
+/* Base hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+/* Active when visible */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Up */
+.fade-up {
+  transform: translateY(50px);
+}
+
+/* Fade Left */
+.fade-left {
+  transform: translateX(-60px);
+}
+
+/* Fade Right */
+.fade-right {
+  transform: translateX(60px);
+}
+
+/* Zoom In */
+.zoom-in {
+  transform: scale(0.9);
+}
+
+/* When active */
+.reveal.active.fade-left,
+.reveal.active.fade-right {
+  transform: translateX(0);
+}
+
+.reveal.active.zoom-in {
+  transform: scale(1);
+}
